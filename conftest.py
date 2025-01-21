@@ -28,8 +28,8 @@ def driver(request):
 def authorization(driver):
     login_page = LoginPage(driver)
     login_page.open_login_page()
-    login_page.send_email(BASE_EMAIL)
-    login_page.send_password(BASE_PASSWORD)
+    login_page.input_email(BASE_EMAIL)
+    login_page.input_password(BASE_PASSWORD)
     login_page.click_button_login()
     login_page.check_place_order()
     return driver
