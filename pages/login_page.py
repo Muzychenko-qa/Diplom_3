@@ -4,6 +4,7 @@ from locators.base_page_locators import *
 from locators.login_page_locators import *
 from locators.profile_page_locators import BUTTON_LOGIN, BUTTON_PLACE_ORDER
 from pages.base_page import BasePage
+from tests_data import BASE_EMAIL, BASE_PASSWORD
 from urls import *
 
 
@@ -21,6 +22,7 @@ class LoginPage (BasePage):
     @allure.step("Ввод пароля в поле ввода")
     def input_password(self, password):
         self.wait_and_find_element(FILED_PASSWORD).send_keys(password)
+
 
     @allure.step("Нажать кнопку 'Восстановить'")
     def click_button_forgot_password(self):
@@ -49,3 +51,7 @@ class LoginPage (BasePage):
     def check_button_save(self):
         save_button = self.wait_and_find_element(BUTTON_SAVE)
         return save_button
+
+    def input_credentials(self):
+        self.input_email(BASE_EMAIL)
+        self.input_password(BASE_PASSWORD)

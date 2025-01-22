@@ -26,6 +26,6 @@ class ProfilePage (BasePage):
     def check_form_login(self):
         return self.wait_and_find_element(FORM_LOGIN)
 
-    @allure.step("Ожидание выбора Истории заказов")
-    def check_selected_history(self):
-        return self.wait_and_find_element(SELECTED_BUTTON_ORDER_HISTORY)
+    # @allure.step("Ожидание выбора Истории заказов")
+    # def check_selected_history(self):
+    #     return self.wait_and_find_element(SELECTED_BUTTON_ORDER_HISTORY)

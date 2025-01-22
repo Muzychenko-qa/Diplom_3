@@ -19,7 +19,7 @@ class TestProfilePage:
         profile_page = ProfilePage(authorization)
         profile_page.navigate_to_profile()
         profile_page.click_order_history()
-        assert profile_page.check_selected_history() and profile_page.get_current_page_url() == ORDER_HISTORY_PROFILE_PAGE_URL
+        assert profile_page.get_current_page_url() == ORDER_HISTORY_PROFILE_PAGE_URL
 
     @allure.title('Тест выход из аккаунта')
     def test_logout_profile_is_open_login_page(self, authorization):

@@ -23,8 +23,8 @@ class TestOrderFeed:
         assert order_feed_page.check_window_info_order()
 
     @allure.title('Тест заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
-    def test_order_history_have_too_feed(self, authorization_place_order):
-        order_feed_page = OrderFeedPage(authorization_place_order)
+    def test_order_history_have_too_feed(self, authorization):
+        order_feed_page = OrderFeedPage(authorization)
         order_feed_page.navigate_to_profile()
         order_feed_page.click_order_history()
         order_from_history = order_feed_page.get_last_order_history()
