@@ -1,6 +1,5 @@
 import allure
 
-from locators.base_page_locators import *
 from locators.login_page_locators import *
 from pages.login_page import LoginPage
 from tests_data import *
@@ -13,7 +12,7 @@ class TestForgotPassword:
     def test_button_open_forgot_password(self, driver):
         login_page = LoginPage(driver)
         login_page.open_login_page()
-        login_page.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        login_page.wait_for_loading_overlay_invisibility()
         login_page.click_forgot_password()
         assert login_page.check_button_forgot_password()
 

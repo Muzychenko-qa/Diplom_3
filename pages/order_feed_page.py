@@ -5,7 +5,7 @@ from locators.profile_page_locators import *
 from pages.base_page import BasePage
 
 
-class OrderFeedPage (BasePage):
+class OrderFeedPage(BasePage):
 
     @allure.step("Нажать ссылку Восстановить пароль")
     def click_order_in_history(self):
@@ -23,6 +23,10 @@ class OrderFeedPage (BasePage):
     def get_check_number_order(self, last_order):
         return self.wait_and_find_element((By.XPATH,
                                            f'//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default") and contains(text(),"{last_order}")]'))
+
+    # @allure.step("Проверить существование последнего номера заказа в Ленте заказов")
+    # def get_check_number_order(self, last_order):
+    #     return self.wait_and_find_element(LAST_ORDER_NUMBER)
 
     @allure.step("Ожидание Окно информации о заказе")
     def check_window_info_order(self):

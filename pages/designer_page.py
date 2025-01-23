@@ -8,7 +8,7 @@ from pages.base_page import BasePage
 
 class DesignerPage (BasePage):
 
-    @allure.step("Нажать на ингридиент")
+    @allure.step("Нажать на ингрдиент")
     def click_ingredient(self):
         self.wait_and_find_element(COUNTER_INGREDIENT).click()
         self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
@@ -46,6 +46,13 @@ class DesignerPage (BasePage):
     @allure.step("Ожидание Детали ингредиента")
     def check_info_ingredient(self):
         return self.wait_and_find_element(INFO_INGREDIENT)
+
+    def check_details_ingredient(self):
+        return self.wait_invisibility_element(INFO_INGREDIENT)
+
+    def get_ingredient_counter_text(self):
+        return self.get_text(COUNTER_INGREDIENT)
+
 
     @allure.step("Ожидание окна Заказ создан - Ваш заказ начали готовить")
     def check_window_start_order(self):

@@ -14,3 +14,7 @@ NUMBER_INFO_ORDER = (By.XPATH, '//*[contains(@class,"Modal_modal__title__")]')
 ORDERS_IN_WORK = (By.XPATH, '//*[contains(@class,"OrderFeed_orderListReady_")]')
 # Все текущие заказы готовы!
 ALL_ORDERS_READY = (By.XPATH, '//*[contains(text(),"Все текущие заказы готовы!")]')
+#Последний заказ
+LAST_ORDER_NUMBER = (By.XPATH,
+                     '//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default") '
+                     'and contains(text(),"{order_number}")]')

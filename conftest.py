@@ -1,11 +1,6 @@
 import pytest
 from selenium import webdriver
-
-from locators.login_page_locators import *
-from locators.profile_page_locators import *
-from pages.designer_page import DesignerPage
 from pages.login_page import LoginPage
-from tests_data import *
 
 
 @pytest.fixture(params=['chrome', 'firefox'])

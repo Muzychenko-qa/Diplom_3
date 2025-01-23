@@ -6,8 +6,6 @@ BUTTON_HEADER_DESIGNER = (By.XPATH, '//*[contains(text(),"Конструктор
 BUTTON_LOGIN_ACCOUNT = (By.XPATH, '//button[text()="Войти в аккаунт"]')
 # Кнопка Лента заказов
 BUTTON_HEADER_ORDER_FEED = (By.XPATH, '//a[@href="/feed"]')
-# # Заголовок 'Соберите бургер'
-# HEADER_TEXT_COLLECT_BURGER = (By.XPATH, ' //h1[text()="Соберите бургер"]')
 # Список ленты заказов
 LIST_ORDER_FEED = (By.XPATH, '//*[contains(@class,"OrderFeed_list__")]')
 # Детали ингредиента

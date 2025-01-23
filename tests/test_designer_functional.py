@@ -36,17 +36,17 @@ class TestDesignerFunctional:
         designer_page.click_ingredient()
         designer_page.check_info_ingredient()
         designer_page.click_close_info_ingredient()
-        assert designer_page.wait_invisibility_element(INFO_INGREDIENT)
+        assert designer_page.check_details_ingredient()
 
     @allure.title('Тест при добавлении ингредиента в заказ, увеличивается каунтер данного ингредиента')
     def test_add_ingredient_is_change_counter_ingredient(self, driver):
         designer_page = DesignerPage(driver)
         designer_page.open_base_page()
         designer_page.move_ingredient()
-        assert designer_page.get_text(COUNTER_INGREDIENT) == "2"
+        assert designer_page.get_ingredient_counter_text() == "2"
 
     @allure.title('Тест залогиненный пользователь может оформить заказ')
-    def test_logined_user_can_place_order(self, authorization):
+    def test_login_user_can_place_order(self, authorization):
         designer_page = DesignerPage(authorization)
         designer_page.open_base_page()
         designer_page.move_ingredient()

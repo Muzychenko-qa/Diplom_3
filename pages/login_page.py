@@ -5,7 +5,6 @@ from locators.login_page_locators import *
 from locators.profile_page_locators import BUTTON_LOGIN, BUTTON_PLACE_ORDER
 from pages.base_page import BasePage
 from tests_data import BASE_EMAIL, BASE_PASSWORD
-from urls import *
 
 
 class LoginPage (BasePage):
@@ -13,6 +12,9 @@ class LoginPage (BasePage):
     @allure.step("Нажать 'Восстановить пароль'")
     def click_forgot_password(self):
         self.wait_and_find_element(BUTTON_LINK_FORGOT_PASSWORD).click()
+        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+
+    def wait_for_loading_overlay_invisibility(self):
         self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
 
     @allure.step("Ввод email в поле ввода")
