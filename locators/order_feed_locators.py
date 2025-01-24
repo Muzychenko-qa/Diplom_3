@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 
 # Номер созданого заказа в истории и ленте
 NUMBERS_HISTORY_ORDER = (By.XPATH, '//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default")]')
+# Кнопка История заказов для страницы создания заказов
+BUTTON_ORDER_HISTORY_FOR_ORDER_FEED = (By.XPATH, '//a[@href="/account/order-history"]')
 # Окно информации о заказе
 INFO_ORDER = (By.XPATH, '//*[contains(@class,"odal_orderBox_")]')
 # Количество Выполнено за всё время
@@ -15,6 +17,4 @@ ORDERS_IN_WORK = (By.XPATH, '//*[contains(@class,"OrderFeed_orderListReady_")]')
 # Все текущие заказы готовы!
 ALL_ORDERS_READY = (By.XPATH, '//*[contains(text(),"Все текущие заказы готовы!")]')
 #Последний заказ
-LAST_ORDER_NUMBER = (By.XPATH,
-                     '//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default") '
-                     'and contains(text(),"{order_number}")]')
+LAST_ORDER_NUMBER = (By.XPATH, '//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default") and contains(text(),"{last_order}")]')

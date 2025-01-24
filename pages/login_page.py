@@ -4,7 +4,7 @@ from locators.base_page_locators import *
 from locators.login_page_locators import *
 from locators.profile_page_locators import BUTTON_LOGIN, BUTTON_PLACE_ORDER
 from pages.base_page import BasePage
-from tests_data import BASE_EMAIL, BASE_PASSWORD
+from tests_data import BASE_CREDENTIAL
 
 
 class LoginPage (BasePage):
@@ -18,13 +18,12 @@ class LoginPage (BasePage):
         self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
 
     @allure.step("Ввод email в поле ввода")
-    def input_email(self, email):
-        self.wait_and_find_element(FILED_EMAIL).send_keys(email)
+    def input_email(self):
+        self.wait_and_find_element(FILED_EMAIL).send_keys(BASE_CREDENTIAL)
 
     @allure.step("Ввод пароля в поле ввода")
-    def input_password(self, password):
-        self.wait_and_find_element(FILED_PASSWORD).send_keys(password)
-
+    def input_password(self):
+        self.wait_and_find_element(FILED_PASSWORD).send_keys(BASE_CREDENTIAL)
 
     @allure.step("Нажать кнопку 'Восстановить'")
     def click_button_forgot_password(self):
@@ -40,6 +39,10 @@ class LoginPage (BasePage):
     def click_show_password(self):
         self.wait_and_find_element(SHOW_PASSWORD).click()
 
+    @allure.step("Получить тип поля ввода пароля")
+    def get_password_input_type(self):
+        return self.wait_and_find_element(FILED_PASSWORD).get_attribute("type")
+
     @allure.step("Нажать на кнопку 'Войти'")
     def click_button_login(self):
         self.wait_and_find_element(BUTTON_LOGIN).click()
@@ -54,6 +57,3 @@ class LoginPage (BasePage):
         save_button = self.wait_and_find_element(BUTTON_SAVE)
         return save_button
 
-    def input_credentials(self):
-        self.input_email(BASE_EMAIL)
-        self.input_password(BASE_PASSWORD)

@@ -1,11 +1,18 @@
 import allure
 
 from locators.order_feed_locators import *
-from locators.profile_page_locators import *
 from pages.base_page import BasePage
 
 
 class OrderFeedPage(BasePage):
+
+    # @allure.step("Проверить исчезновение заголовка 'Все текущие заказы готовы!'")
+    # def wait_for_orders_ready_invisibility(self):
+    #     self.wait_invisibility_element(ALL_ORDERS_READY)
+    #
+    # @allure.step("Получить текст текущих заказов")
+    # def get_orders_in_work_text(self):
+    #     return self.get_text(ORDERS_IN_WORK)
 
     @allure.step("Нажать ссылку Восстановить пароль")
     def click_order_in_history(self):
@@ -13,7 +20,7 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Нажать кнопку Личный кабинет")
     def click_order_history(self):
-        self.wait_and_find_element(BUTTON_ORDER_HISTORY).click()
+        self.wait_and_find_element(BUTTON_ORDER_HISTORY_FOR_ORDER_FEED).click()
 
     @allure.step("Получить номер последнего заказа из История заказов")
     def get_last_order_history(self):
@@ -21,13 +28,10 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Проверить существование последнего номера заказа в Ленте заказов")
     def get_check_number_order(self, last_order):
-        return self.wait_and_find_element((By.XPATH,
-                                           f'//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default") and contains(text(),"{last_order}")]'))
-
-    # @allure.step("Проверить существование последнего номера заказа в Ленте заказов")
-    # def get_check_number_order(self, last_order):
-    #     return self.wait_and_find_element(LAST_ORDER_NUMBER)
+        locator = (LAST_ORDER_NUMBER[0], LAST_ORDER_NUMBER[1].format(last_order=last_order))
+        return self.wait_and_find_element(locator)
 
     @allure.step("Ожидание Окно информации о заказе")
     def check_window_info_order(self):
         return self.wait_and_find_element(INFO_ORDER)
+

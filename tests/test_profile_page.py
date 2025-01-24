@@ -1,6 +1,5 @@
 import allure
 
-from locators.profile_page_locators import *
 from pages.profile_page import ProfilePage
 from urls import *
 

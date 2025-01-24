@@ -25,7 +25,3 @@ class ProfilePage (BasePage):
     @allure.step("Ожидание окна Заказ создан - Ваш заказ начали готовить")
     def check_form_login(self):
         return self.wait_and_find_element(FORM_LOGIN)
-
-    # @allure.step("Ожидание выбора Истории заказов")
-    # def check_selected_history(self):
-    #     return self.wait_and_find_element(SELECTED_BUTTON_ORDER_HISTORY)

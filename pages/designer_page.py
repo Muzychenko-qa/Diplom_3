@@ -53,7 +53,6 @@ class DesignerPage (BasePage):
     def get_ingredient_counter_text(self):
         return self.get_text(COUNTER_INGREDIENT)
 
-
     @allure.step("Ожидание окна Заказ создан - Ваш заказ начали готовить")
     def check_window_start_order(self):
         return self.wait_and_find_element(WINDOW_START_ORDER)

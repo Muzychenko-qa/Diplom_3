@@ -1,8 +1,5 @@
 import allure
-
-from locators.login_page_locators import *
 from pages.login_page import LoginPage
-from tests_data import *
 from urls import *
 
 @allure.suite("Восстановление пароля")
@@ -20,7 +17,7 @@ class TestForgotPassword:
     def test_send_email_open_reset_password(self, driver):
         login_page = LoginPage(driver)
         login_page.navigate_to_password_recovery()
-        login_page.input_email(BASE_EMAIL)
+        login_page.input_email()
         login_page.click_button_forgot_password()
         assert login_page.check_button_save() and login_page.get_current_page_url() == RESET_PASSWORD_PAGE_URL
 
@@ -28,9 +25,9 @@ class TestForgotPassword:
     def test_button_show_password(self, driver):
         login_page = LoginPage(driver)
         login_page.navigate_to_password_recovery()
-        login_page.input_email(BASE_EMAIL)
+        login_page.input_email()
         login_page.click_button_forgot_password()
         login_page.check_button_save()
-        login_page.input_password(BASE_EMAIL)
+        login_page.input_password()
         login_page.click_show_password()
-        assert login_page.get_type_input(FILED_PASSWORD) == "text"
+        assert login_page.get_password_input_type() == "text"

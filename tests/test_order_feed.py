@@ -15,6 +15,7 @@ class TestOrderFeed:
         order_feed_page.wait_invisibility_element(ALL_ORDERS_READY)
         assert new_number_order in order_feed_page.get_text(ORDERS_IN_WORK)
 
+
     @allure.title('Тест если кликнуть на заказ, откроется всплывающее окно с деталями')
     def test_click_order_is_opened_order_info(self, driver):
         order_feed_page = OrderFeedPage(driver)

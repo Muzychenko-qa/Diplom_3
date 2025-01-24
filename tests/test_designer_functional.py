@@ -1,6 +1,5 @@
 import allure
 
-from locators.base_page_locators import *
 from pages.designer_page import DesignerPage
 from urls import *
 
