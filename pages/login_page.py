@@ -1,9 +1,7 @@
 import allure
 
-from locators.base_page_locators import *
-from locators.login_page_locators import *
-from locators.profile_page_locators import BUTTON_LOGIN, BUTTON_PLACE_ORDER
 from pages.base_page import BasePage
+from locators.login_page_locators import *
 from tests_data import BASE_CREDENTIAL
 
 
@@ -12,10 +10,10 @@ class LoginPage (BasePage):
     @allure.step("Нажать 'Восстановить пароль'")
     def click_forgot_password(self):
         self.wait_and_find_element(BUTTON_LINK_FORGOT_PASSWORD).click()
-        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        self.wait_for_loading_to_disappear()
 
     def wait_for_loading_overlay_invisibility(self):
-        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        self.wait_for_loading_to_disappear()
 
     @allure.step("Ввод email в поле ввода")
     def input_email(self):
@@ -28,7 +26,7 @@ class LoginPage (BasePage):
     @allure.step("Нажать кнопку 'Восстановить'")
     def click_button_forgot_password(self):
         self.wait_and_find_element(BUTTON_FORGOT_PASSWORD).click()
-        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        self.wait_for_loading_to_disappear()
 
     @allure.step("Ожидание кнопки 'Восстановить'")
     def check_button_forgot_password(self):
@@ -48,12 +46,6 @@ class LoginPage (BasePage):
         self.wait_and_find_element(BUTTON_LOGIN).click()
 
     @allure.step("Ожидание кнопки 'Оформить заказ'")
-    def check_place_order(self):
-        place_order_button = self.wait_and_find_element(BUTTON_PLACE_ORDER)
-        return place_order_button
-
-    @allure.step("Ожидание кнопки 'Оформить заказ'")
     def check_button_save(self):
         save_button = self.wait_and_find_element(BUTTON_SAVE)
         return save_button
-

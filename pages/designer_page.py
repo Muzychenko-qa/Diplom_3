@@ -1,17 +1,15 @@
 import allure
 
-from locators.base_page_locators import *
-from locators.order_feed_locators import *
-from locators.profile_page_locators import *
+from locators.designer_page_locators import *
 from pages.base_page import BasePage
 
 
 class DesignerPage (BasePage):
 
-    @allure.step("Нажать на ингрдиент")
+    @allure.step("Нажать на ингредиент")
     def click_ingredient(self):
         self.wait_and_find_element(COUNTER_INGREDIENT).click()
-        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        self.wait_for_loading_to_disappear()
 
     @allure.step("Закрыть информацию об ингредиенте")
     def click_close_info_ingredient(self):
@@ -22,12 +20,17 @@ class DesignerPage (BasePage):
         ingredient_element = self.wait_and_find_element(ELEMENT_INGREDIENT)
         order_area = self.wait_and_find_element(SPACE_ORDER)
         self.drag_and_drop(ingredient_element, order_area)
-        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        self.wait_for_loading_to_disappear()
 
     @allure.step("Нажать кнопку Оформить заказ")
     def click_place_order(self):
         self.wait_and_find_element(BUTTON_PLACE_ORDER).click()
-        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        self.wait_for_loading_to_disappear()
+
+    @allure.step("Ожидание кнопки 'Оформить заказ'")
+    def check_place_order(self):
+        place_order_button = self.wait_and_find_element(BUTTON_PLACE_ORDER)
+        return place_order_button
 
     @allure.step("Нажать кнопку Закрыть окно Заказ создан")
     def click_close_place_order(self):
@@ -38,7 +41,7 @@ class DesignerPage (BasePage):
         self.open_base_page()
         self.move_ingredient()
         self.click_place_order()
-        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
+        self.wait_for_loading_to_disappear()
         new_number_order = self.get_text(NUMBER_INFO_ORDER)
         self.click_close_place_order()
         return new_number_order
@@ -47,7 +50,7 @@ class DesignerPage (BasePage):
     def check_info_ingredient(self):
         return self.wait_and_find_element(INFO_INGREDIENT)
 
-    def check_details_ingredient(self):
+    def wait_invisibility_details_ingredient(self):
         return self.wait_invisibility_element(INFO_INGREDIENT)
 
     def get_ingredient_counter_text(self):

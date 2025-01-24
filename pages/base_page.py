@@ -10,11 +10,14 @@ class BasePage:
         self.driver = driver
 
     def wait_and_find_element(self, locator):
-        WebDriverWait(self.driver, 200).until(expected_conditions.element_to_be_clickable(locator))
+        WebDriverWait(self.driver, 250).until(expected_conditions.element_to_be_clickable(locator))
         return self.driver.find_element(*locator)
 
     def wait_invisibility_element(self, locator):
         return WebDriverWait(self.driver, 40).until(expected_conditions.invisibility_of_element_located(locator))
+
+    def wait_for_loading_to_disappear(self):
+        self.wait_invisibility_element(LOADING_MODAL_OVERLAY)
 
     def click_constructor_button(self):
         self.wait_and_find_element(BUTTON_HEADER_DESIGNER).click()

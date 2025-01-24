@@ -1,6 +1,5 @@
 import allure
 
-from locators.order_feed_locators import *
 from pages.designer_page import DesignerPage
 from pages.order_feed_page import OrderFeedPage
 
@@ -9,12 +8,13 @@ class TestOrderFeed:
 
     @allure.title('Тест после оформления заказа его номер появляется в разделе В работе')
     def test_new_order_have_in_work(self, authorization):
-        order_feed_page = DesignerPage(authorization)
-        new_number_order = order_feed_page.create_order()
-        order_feed_page.click_order_feed_button()
-        order_feed_page.wait_invisibility_element(ALL_ORDERS_READY)
-        assert new_number_order in order_feed_page.get_text(ORDERS_IN_WORK)
+        designer_page = DesignerPage(authorization)
+        order_feed_page = OrderFeedPage(authorization)
+        new_number_order = designer_page.create_order()
+        designer_page.click_order_feed_button()
 
+        order_feed_page.wait_for_orders_ready_invisibility()
+        assert new_number_order in order_feed_page.get_orders_in_work_text()
 
     @allure.title('Тест если кликнуть на заказ, откроется всплывающее окно с деталями')
     def test_click_order_is_opened_order_info(self, driver):
@@ -34,20 +34,22 @@ class TestOrderFeed:
 
     @allure.title('Тест при создании нового заказа счётчик Выполнено за всё время увеличивается')
     def test_new_order_change_all_time_order(self, authorization):
-        order_feed_page = DesignerPage(authorization)
+        designer_page = DesignerPage(authorization)
+        order_feed_page = OrderFeedPage(authorization)
         order_feed_page.open_order_page()
-        old_all_time_order = order_feed_page.get_text(ALL_TIME_ORDERS)
-        order_feed_page.create_order()
+        old_all_time_order = order_feed_page.get_all_time_orders_count()
+        designer_page.create_order()
         order_feed_page.open_order_page()
-        new_all_time_order = order_feed_page.get_text(ALL_TIME_ORDERS)
+        new_all_time_order = order_feed_page.get_all_time_orders_count()
         assert new_all_time_order > old_all_time_order
 
     @allure.title('Тест при создании нового заказа счётчик Выполнено за сегодня увеличивается')
     def test_new_order_change_day_time_order(self, authorization):
-        order_feed_page = DesignerPage(authorization)
+        designer_page = DesignerPage(authorization)
+        order_feed_page = OrderFeedPage(authorization)
         order_feed_page.open_order_page()
-        old_day_time_order = order_feed_page.get_text(DAY_ORDERS)
-        order_feed_page.create_order()
+        old_day_time_order = order_feed_page.get_day_time_orders_count()
+        designer_page.create_order()
         order_feed_page.open_order_page()
-        new_day_time_order = order_feed_page.get_text(DAY_ORDERS)
+        new_day_time_order = order_feed_page.get_day_time_orders_count()
         assert new_day_time_order > old_day_time_order

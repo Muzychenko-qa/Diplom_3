@@ -6,17 +6,25 @@ from pages.base_page import BasePage
 
 class OrderFeedPage(BasePage):
 
-    # @allure.step("Проверить исчезновение заголовка 'Все текущие заказы готовы!'")
-    # def wait_for_orders_ready_invisibility(self):
-    #     self.wait_invisibility_element(ALL_ORDERS_READY)
-    #
-    # @allure.step("Получить текст текущих заказов")
-    # def get_orders_in_work_text(self):
-    #     return self.get_text(ORDERS_IN_WORK)
+    @allure.step("Проверить исчезновение заголовка 'Все текущие заказы готовы!'")
+    def wait_for_orders_ready_invisibility(self):
+        self.wait_invisibility_element(ALL_ORDERS_READY)
+
+    @allure.step("Получить текст текущих заказов")
+    def get_orders_in_work_text(self):
+        return self.get_text(ORDERS_IN_WORK)
 
     @allure.step("Нажать ссылку Восстановить пароль")
     def click_order_in_history(self):
         self.wait_and_find_element(NUMBERS_HISTORY_ORDER).click()
+
+    @allure.step("Получить значение счётчика 'Выполнено за всё время'")
+    def get_all_time_orders_count(self):
+        return int(self.get_text(ALL_TIME_ORDERS))
+
+    @allure.step("Получить значение счётчика 'Выполнено за сегодня'")
+    def get_day_time_orders_count(self):
+        return int(self.get_text(DAY_ORDERS))
 
     @allure.step("Нажать кнопку Личный кабинет")
     def click_order_history(self):

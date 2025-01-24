@@ -10,8 +10,6 @@ INFO_ORDER = (By.XPATH, '//*[contains(@class,"odal_orderBox_")]')
 ALL_TIME_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за все время")]/..//*[contains(@class,"rderFeed_number__")]')
 # Количество Выполнено за сегодня
 DAY_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за сегодня")]/..//*[contains(@class,"rderFeed_number__")]')
-# Номер созданого заказа в окне информации о заказе
-NUMBER_INFO_ORDER = (By.XPATH, '//*[contains(@class,"Modal_modal__title__")]')
 # Все номера заказов в разделе В работе
 ORDERS_IN_WORK = (By.XPATH, '//*[contains(@class,"OrderFeed_orderListReady_")]')
 # Все текущие заказы готовы!

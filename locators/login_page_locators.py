@@ -12,3 +12,5 @@ BUTTON_SAVE = (By.XPATH, '//button[text()="Сохранить"]')
 FILED_PASSWORD = (By.XPATH, '//*[contains(text(),"Пароль")]/parent::*/input')
 # Кнопка Показать пароль
 SHOW_PASSWORD = (By.CLASS_NAME, 'input__icon-action')
+# Кнопка Войти
+BUTTON_LOGIN = (By.XPATH, '//button[contains(text(),"Войти")]')

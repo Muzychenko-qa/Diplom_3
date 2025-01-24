@@ -18,7 +18,6 @@ class TestDesignerFunctional:
         designer_page = DesignerPage(driver)
         designer_page.open_base_page()
         designer_page.click_order_feed_button()
-
         assert designer_page.get_current_page_url() == ORDER_FEED_PAGE_URL
 
     @allure.title('Тест если кликнуть на ингредиент, появится всплывающее окно с деталями')
@@ -35,7 +34,7 @@ class TestDesignerFunctional:
         designer_page.click_ingredient()
         designer_page.check_info_ingredient()
         designer_page.click_close_info_ingredient()
-        assert designer_page.check_details_ingredient()
+        assert designer_page.wait_invisibility_details_ingredient()
 
     @allure.title('Тест при добавлении ингредиента в заказ, увеличивается каунтер данного ингредиента')
     def test_add_ingredient_is_change_counter_ingredient(self, driver):
